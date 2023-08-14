@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagar - Tu Producto Increíble</title>
+</head>
+<body>
+    <header>
+        <nav>
+          <ul class="navigation">
+            <li class="img-logo"><img src="./img/logo.png" alt="Logo"></li>
+          </ul>
+        </nav>
+      </header>
+  <main>
+    <section class="payment-section">
+      <h1>Proceso de Pago</h1>
+      <div class="payment-info">
+        <p>Producto a Comprar: Tu Producto Increíble</p>
+        <p>Precio Total: $ <%= monto %></p>
+      </div>
+
+      <form action="<%= url %>" method="post">
+        <input type="text" name="token_ws" value="<%= token %>" hidden/>
+
+        <div class="payment-actions">
+            <button class="cta-button" type="submit">Pagar Ahora</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+
+
+<style>
+    .img-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 0px 0px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    /* Estilos generales */
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Encabezado y Barra de Navegación */
+    header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    }
+
+    .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    }
+
+    .img-logo img {
+    max-width: 100%;
+    height: auto;
+    }
+
+    /* Sección de Pago */
+    .payment-section {
+    text-align: center;
+    padding: 40px;
+    }
+
+    .payment-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+
+    .payment-info {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    }
+
+    .payment-info p {
+    font-size: 18px;
+    margin: 5px 0;
+    }
+
+    .cta-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+    background-color: #0056b3;
+    border: none;
+    }
+
+    /* Pie de Página */
+    footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    }
+
+    /* Estilos adicionales para responsividad */
+    @media (max-width: 768px) {
+    .payment-section {
+        padding: 20px;
+    }
+    }
+
+    </style>

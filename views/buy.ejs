@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra Tu Producto Increíble</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="navigation">
+        <li class="img-logo"><img src="./img/logo.png" alt="Logo"></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="buy-section">
+      <h1>Completa tu Compra</h1>
+      <form action="/submit" method="post" class="buy-form">
+        <label for="name">Nombre completo:</label>
+        <input type="text" id="name" name="name" required>
+  
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+  
+        <label for="address">Dirección de Envío:</label>
+        <textarea id="address" placeholder="Region Los lagos Comuna Purranque Dirección Pedro Montt 232" name="address" rows="4" required></textarea>
+
+        <label for="numero">Numero Telefonico:</label>
+        <input type="number" placeholder="987654321" id="numero" name="numero" required>
+
+        <label for="quantity">Cantidad a Comprar:</label>
+        <select id="quantity" name="quantity" required>
+          <option value="1">1 producto</option>
+          <option value="2">2 productos</option>
+          <option value="3">3 productos (¡Paga solo 2!)</option>
+          <option value="4">4 productos</option>
+          <option value="5">5 productos</option>
+          <option value="6">6 productos (¡Paga solo 4!)</option>
+          <option value="10">10 productos (¡Paga solo 7!)</option>
+
+        </select>
+
+        <label class="precio-label" for="price">Precio Total</label>
+        <h3 id="precio"></h3>
+        <input type="number" id="price" name="price" min="0" style="display: none;" required >
+  
+        <button type="submit" class="cta-button">Realizar Compra</button>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+
+<style>
+.img-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.buy-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.buy-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Estilos para el elemento select */
+.buy-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* Para resetear estilos de navegadores */
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc); /* Flechas personalizadas */
+  background-position: calc(100% - 20px) 8px, calc(100% - 15px) 8px, 100%;
+  background-size: 7px 5px, 5px 5px, 2.5em 2.5em; /* Tamaño de flechas y fondo */
+  background-repeat: no-repeat; /* No repetir fondo */
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.buy-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.buy-form input[type="text"],
+.buy-form input[type="email"],
+.buy-form input[type="number"],
+.buy-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buy-form textarea {
+  resize: vertical;
+}
+
+.buy-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+h3 {
+    margin-bottom: 25px;
+}
+
+.precio-label{
+    margin-top: 20px;
+}
+</style>
+
+<script>
+    // Función para calcular el precio y actualizar el h3
+    function calcularPrecio() {
+      const select = document.getElementById('quantity');
+      const precioH3 = document.getElementById('precio');
+      const priceInput = document.getElementById('price');
+      const precioPorProducto = 17990; // Precio por producto
+  
+      const cantidadSeleccionada = parseInt(select.value);
+      let precioTotal = cantidadSeleccionada * precioPorProducto;
+  
+      // Aplicar descuento si la cantidad seleccionada es 3
+      if (cantidadSeleccionada === 3) {
+        const descuento = precioPorProducto;
+        precioTotal -= descuento;
+
+      } else if (cantidadSeleccionada === 6){
+        const descuento = precioPorProducto;
+
+        precioTotal -= (descuento*2);
+      } else if (cantidadSeleccionada === 10){
+        const descuento = precioPorProducto;
+        precioTotal -= (descuento*3);
+      }
+  
+      precioH3.textContent = `Precio Total: $ ${precioTotal.toFixed(0)}`;
+      priceInput.value = precioTotal;
+    }
+  
+    // Agregar evento change al select
+    const select = document.getElementById('quantity');
+    select.addEventListener('change', calcularPrecio);
+  
+    // Calcular precio inicial al cargar la página
+    calcularPrecio();
+  </script>
+  
+  
