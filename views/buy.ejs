@@ -6,30 +6,45 @@
   <title>Compra Tu Producto Increíble</title>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul class="navigation">
-        <li class="img-logo"><img src="./img/logo.png" alt="Logo"></li>
-      </ul>
-    </nav>
-  </header>
+  
   <main>
+
+    <section class="product-details">
+      <div class="product-image">
+        <img src="./img/crema-producto.png" alt="Nombre del Producto">
+      </div>
+      <div class="product-info">
+        <h2 class="product-name">Crema Antiarrugas Increíble</h2>
+        <p class="product-iva">(IVA incluido)</p>
+        <p class="product-payment">¡Paga con tarjeta de crédito hasta en 12 cuotas!</p>
+      </div>
+    </section>
+
+    <div class="discount-container">
+      <div class="discount-content">
+        <p>Aprovecha esta oferta especial:</p>
+        <h3>¡62% de Descuento Aplicado!</h3>
+        <p>Realiza tu compra ahora y obtén un precio increíblemente reducido.</p>
+        <p>¡No pierdas esta oportunidad! Validez unica.</p>
+      </div>
+    </div>
+    
+
     <section class="buy-section">
-      <h1>Completa tu Compra</h1>
       <form action="/submit" method="post" class="buy-form">
-        <label for="name">Nombre completo:</label>
+        <label for="name">Tu nombre completo</label>
         <input type="text" id="name" name="name" required>
   
-        <label for="email">Email:</label>
+        <label for="email">Tu email</label>
         <input type="email" id="email" name="email" required>
   
-        <label for="address">Dirección de Envío:</label>
+        <label for="address">Dirección de Envío</label>
         <textarea id="address" placeholder="Region Los lagos Comuna Purranque Dirección Pedro Montt 232" name="address" rows="4" required></textarea>
 
-        <label for="numero">Numero Telefonico:</label>
+        <label for="numero">Numero celular</label>
         <input type="number" placeholder="987654321" id="numero" name="numero" required>
 
-        <label for="quantity">Cantidad a Comprar:</label>
+        <label for="quantity">Cantidad a Comprar</label>
         <select id="quantity" name="quantity" required>
           <option value="1">1 producto</option>
           <option value="2">2 productos</option>
@@ -45,25 +60,70 @@
         <h3 id="precio"></h3>
         <input type="number" id="price" name="price" min="0" style="display: none;" required >
   
-        <button type="submit" class="cta-button">Realizar Compra</button>
+        <button type="submit" class="cta-button">Comprar ahora</button>
       </form>
     </section>
   </main>
-  
-  <footer>
-    <p>&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
   </footer>
 </body>
 </html>
 
 <style>
-.img-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
+  .footer {
+  background-color: #f7f7f7;
+  padding: 20px 0;
+  text-align: center;
 }
 
+.footer-content {
+  font-size: 14px;
+  color: #888;
+}
+
+  body{
+    font-family: 'Dancing Script';
+  }
+
+  /* Estilos para la sección de detalles del producto */
+.product-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+/* Estilos para la imagen del producto */
+.product-image img {
+  max-width: 200px;
+}
+
+/* Estilos para la información del producto */
+.product-info {
+  text-align: center;
+}
+
+.product-name {
+  font-size: 24px;
+  color: rgb(230, 60, 109);
+  margin-bottom: 10px;
+}
+
+.product-iva {
+  font-size: 16px;
+  color: gray;
+}
+
+.product-payment {
+  font-size: 16px;
+  color: green;
+  margin-top: 10px;
+}
+/* Fomrluario estilos */
 .buy-section {
   text-align: center;
   padding: 50px 0;
@@ -90,14 +150,6 @@
   font-weight: 600;
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 0px 0px;
-  display: flex;
-  justify-content: center;
-}
-
 .buy-form label {
   display: block;
   margin-bottom: 10px;
@@ -122,13 +174,14 @@ footer {
 .buy-form button {
   display: block;
   width: 100%;
-  padding: 10px;
-  background-color: #f44336;
+  padding: 15px ;
+  background-color: #12e744;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  letter-spacing: 2px;
 }
 
 h3 {
@@ -138,6 +191,33 @@ h3 {
 .precio-label{
     margin-top: 20px;
 }
+
+/* Cupon */
+.discount-container {
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  width: 300px; /* Ajusta el ancho según tus preferencias */
+  margin: auto;
+}
+
+.discount-content {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.discount-content h3 {
+  font-size: 24px;
+  color: #e63c6d;
+  margin-top: 10px;
+}
+
+/* Opcional: Agrega estilos adicionales según tus preferencias */
+
 </style>
 
 <script>

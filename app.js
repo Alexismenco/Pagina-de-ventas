@@ -83,6 +83,9 @@ app.get('/pago', async (req, res) => {
 
     if (commitResponse.status === 'AUTHORIZED') {
       // Email cliente
+      const direccionRetorno = process.env.DIRECCIONRETORNO;
+      const nuevaDireccion = direccionRetorno.replace('/pago', '/assets/cuidado-piel.pdf');
+      
       const mensajeHTML = `
         <html>
           <body style="font-family: Arial, sans-serif;">
@@ -94,13 +97,16 @@ app.get('/pago', async (req, res) => {
               <li>Producto: Tu Producto Increíble</li>
               <li>Monto: $${userData.price}</li>
             </ul>
-            <p>Esperamos que disfrutes de tu compra. Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
+            <p>Esperamos que disfrutes de tu compra. Como agradecimiento, te regalamos un eBook de Cuidado de Piel.</p>
+            <p><a href="${nuevaDireccion}" target="_blank" style="color: #e63c6d; text-decoration: none;">Descarga tu eBook aquí</a></p>
+            <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
             <p>¡Gracias nuevamente!</p>
             <p>Atentamente,</p>
             <p>El Equipo de la Empresa</p>
           </body>
         </html>
       `;
+      
 
       // Email encargado de sitio
       const mensajeEncargado = `
